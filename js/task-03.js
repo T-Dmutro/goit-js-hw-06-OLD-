@@ -12,14 +12,20 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
-const imageLink = document.querySelector('gallery')
-const productView = ({url, alt}) =>{
-  const productImg = document.createElement('img');
-  const productAlt = document.createElement('alt');
-  productImg.textContent = url;
-  productAlt.textContent = alt;
-  productImg.append(productAlt);
-  return productImg;
-}
-const productViews = images.map((product)=> productView(product));
-imageLink.append(...productView);
+
+
+
+
+const galleryList = document.querySelector(".gallery");
+
+const imagesRef  = images
+.map(element => 
+  `<li class="gallety-item"><img class="gallety-img" src="${element.url}"
+  alt="${element.alt}"/>
+  </li>`
+)
+.join("");
+
+
+galleryList.insertAdjacentHTML("afterbegin", imagesRef);
+console.log(galleryList);
